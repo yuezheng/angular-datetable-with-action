@@ -13,7 +13,8 @@ angular
     'ngAnimate',
     'ngResource',
     'ngRoute',
-    'datatable'
+    'datatable',
+    'datatable.filters'
   ])
   .config ($routeProvider, $httpProvider, $sceDelegateProvider) ->
     $httpProvider.defaults.useXDomain = true

@@ -33,12 +33,12 @@ class InstanceTable extends window.TableView
     {
       field: "fixed",
       displayName: "FixedIP",
-      cellTemplate: '<div class="ngCellText" ng-click="test(col)"><li ng-repeat="ip in item.fixed">{{ip | parseNull}}</li></div>'
+      cellTemplate: '<div class="ngCellText"><li ng-repeat="ip in item.fixed">{{ip | parseNull}}</li></div>'
     }
     {
       field: "floating",
       displayName: "FloatingIP",
-      cellTemplate: '<div class=ngCellText ng-click="test(row, col, $event)"><li ng-repeat="ip in item.floating">{{ip}}</li><li ng-if="item.floating.length==0">{{null | parseNull}}</li></div>'
+      cellTemplate: '<div class=ngCellText><li ng-repeat="ip in item.floating">{{ip}}</li><li ng-if="item.floating.length==0">{{null | parseNull}}</li></div>'
     }
     {
       field: "image_name",
@@ -68,3 +68,28 @@ class InstanceTable extends window.TableView
   ]
   listData: ($scope, options, dataQueryOpts, callback) ->
     $http = options.$http
+
+    getAddr = (addresses) ->
+      fixed = []
+      floating = []
+      if addresses.private
+        for addr in addresses.private
+          if addr['OS-EXT-IPS:type'] == 'fixed'
+            fixed.push addr.addr
+          else if addr['OS-EXT-IPS:type'] == 'floating'
+            floating.push addr.addr
+      return {fixed: fixed, floating: floating}
+
+    $http.get("./scripts/controllers/testdata.json")
+      .success (instances) ->
+        serverList = []
+        for instance in instances.data
+          address = JSON.parse(instance.addresses)
+          addresses = getAddr address
+          instance.fixed = addresses.fixed
+          instance.floating = addresses.floating
+          delete instance.addresses
+          serverList.push instance
+
+        callback serverList, instances.total
+
