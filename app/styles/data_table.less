@@ -1,0 +1,351 @@
+@import "variables.less";
+
+.datatable {
+  position: relative;
+}
+
+.gridStyle {
+  border: none;
+  width: 100%;
+  height: 500px;
+
+  .ngHeaderContainer {
+    background: @DATA_TABLE_HEADER_BG;
+  }
+
+  .ngHeaderSortColumn {
+    text-align: center;
+  }
+  .ngVerticalBarVisible {
+    background: none;
+  }
+
+  .enableClick {
+    color: @LINK_COLOR;
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  .ngViewport {
+    height: auto !important;
+  }
+  .ngRow.even {
+    background: @DATA_TABLE_EVEN_ROW_BG;
+    &:hover {
+      background: @DATA_TABLE_ROW_HOVER; }
+  }
+  .ngRow.odd {
+    background: @DATA_TABLE_ODD_ROW_BG;
+    &:hover {
+      background: @DATA_TABLE_ROW_HOVER;
+    }
+  }
+
+}
+
+.enableClick {
+  color: @LINK_COLOR;
+  cursor: pointer;
+  a {
+    color: @LINK_COLOR;
+    display: block;
+    width: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.data-table {
+  width: 100%;
+  table-layout:fixed;
+  thead tr th, tfoot tr td{
+    height: 36px;
+    border-left: 1px solid #fff;
+    &:first-child {
+      border-left: 0;
+    }
+    &.checkbox-in-table {
+      text-align: center;
+      padding-left: 0;
+    }
+    a {
+      text-decoration: none;
+      cursor: pointer;
+      color: @DATA_TABLE_HEADER_TEXT;
+      font-weight: normal;
+      &:hover {
+        color: @DATA_TABLE_HEADER_TEXT;
+      }
+    }
+    text-align: left;
+    padding-left: 10px;
+    border: none;
+    span {
+      white-space: nowrap;
+    }
+  }
+  .data-table-header {
+    background-color: #f4f5f6;
+    border: none;
+  }
+  /* End of .data-table-header */
+
+  .data-table-body {
+    .data-table-body-row {
+
+      td {
+        height: 32px;
+        border-bottom: 1px solid #f0f0f0;
+        padding-left: 10px;
+
+        &.checkbox-in-table {
+          text-align: center;
+          padding-left: 0;
+        }
+
+        .ngCellText {
+           text-align: left;
+           border: none;
+           li {
+             list-style: none;
+           }
+        }
+
+        &:first-child {
+          border-left: 1px solid #f0f0f0;
+        }
+
+        &:last-child {
+          border-right: 1px solid #f0f0f0;
+        }
+      }
+      &.even {
+        background: #ffffff;
+        &:hover {
+          background: #f9f9f9;
+        }
+      }
+      &.odd {
+        background: #ffffff;
+        &:hover {
+          background: #f9f9f9;
+        }
+      }
+      .data-table-body-cell {
+        white-space: nowrap;
+        word-break : keep-all;
+        overflow: hidden;
+        border: none;
+      }
+    }
+  }
+  /* End of .data-table-body */
+
+  .clear {
+    clear: both;
+  }
+
+  .checkbox-in-table {
+    width: 3%;
+    border: none;
+  }
+}
+
+.datatable-null-tips {
+  height: 50px;
+  text-align: center;
+  margin-top: 20px;
+  color: #B7B5B5;
+  font-style: italic;
+}
+
+.instances-table {
+  .name, .project, .hypervisor_hostname {
+    width: 15%;
+  }
+  .fixed, .floating {
+    width: 10%;
+  }
+  .vcpus, .ram {
+    width: 6%;
+  }
+  th.status {
+    width: 10%;
+  }
+  th.created {
+    width: 15%;
+  }
+}
+
+.projects_table {
+  table {
+    .name {
+      width: 30%;
+    }
+    .description {
+      width: 50%;
+    }
+  }
+}
+
+.alarm_logs_table {
+  .resource_type, .type, .created_at {
+    width: 15%;
+  }
+  .alarm_id {
+    width: 25%;
+  }
+  .resource {
+    width: 30%;
+  }
+}
+
+.users_table {
+  table {
+    .name {
+      width: 25%;
+    }
+    .email {
+      width: 30%;
+    }
+    .project_name {
+      width: 30%;
+    }
+  }
+}
+
+.ngFooterPanel, .footer-panel {
+  background-color: @DATA_TABLE_EVEN_ROW_BG;
+  border-top: none;
+  .pageCode {
+    width: 190px;
+    height: 25px;
+    float: right;
+    margin-top: 10px;
+    li {
+      list-style: none;
+      float: left;
+      font-size: 14px;
+      display: block;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 10px;
+      cursor: pointer;
+      &.pagetrue {
+        font-style: italic;
+        font-weight: 800;
+        color: @ACTIVE_TEXT_COLOR;
+        font-size: 16px;
+      }
+      &.change-page {
+        border-radius: 0px;
+        &:hover {
+          background-color: @BUTTON_ENABLED_BG;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.data-filter {
+  position: relative;
+  .table-arrow {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -4px;
+    left: 3px;
+    background: url("../images/table_arrow.png") no-repeat;
+    background-position: 5px 5px;
+    cursor: pointer;
+  }
+  .filter-select {
+    width: 25px;
+    height: 25px;
+    margin-left: 9px;
+    opacity: 0;
+    option {
+      white-space: pre;
+    }
+  }
+}
+
+/* Loading of data */
+@keyframes loading
+{
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading() {
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-linearanimation-delay:0;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+
+  -moz-animation-name: loading;
+  -moz-animation-duration: 1s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-delay: 0;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-play-state: running;
+
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-delay: 0;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-play-state: running;
+
+  -ms-animation-name: loading;
+  -ms-animation-duration: 1s;
+  -ms-animation-timing-function: linear;
+  -ms-animation-delay: 0;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-play-state: running;
+}
+
+.datatable-loading {
+  text-align: center;
+  position: absolute;
+  height: 40px;
+  width: 100%;
+  top: 10px;
+  background: white;
+  div {
+    width: 35px;
+    height: 35px;
+    left: 46%;
+  }
+  .logo-continer {
+    position: absolute;
+    background: url(../images/loading.png) center no-repeat;
+    .loading();
+  }
+  .cricle-continer {
+    position: absolute;
+    background: url(../images/loading_image.png) center no-repeat;
+  }
+}
