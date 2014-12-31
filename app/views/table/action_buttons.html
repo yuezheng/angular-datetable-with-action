@@ -1,0 +1,52 @@
+<span ng-repeat="button in actions">
+  <button ng-if="button.tag=='button'"
+    ng-class="[{true: 'btn-enable', false: 'btn-disable'}[button.enable], button.name]"
+    submit-confirm='button.action("buttons", $index)'
+    items=items
+    action-enabled="button.action_enable"
+    submit-confirm-action={{button.confirm}}
+    class="btn">
+    <i></i>
+    {{button.verbose}}
+  </button>
+  <a class="btn" ng-if="button.tag=='a'"
+   ng-click="button.action(button.link)"
+   ng-class="[{true: 'btn-enable',false: 'btn-disable'}[button.enable], button.name]">
+    <i></i>
+    {{button.verbose}}
+  </a>
+</span>
+<div class="btn-group" ng-if="buttons.hasMore">
+  <button type="button" class="btn dropdown-toggle btn-enable more"
+    data-toggle="dropdown">
+    {{more}}
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li ng-repeat="action in moreAction">
+      <a ng-if="action.type=='action'"
+        ng-class="[{true: 'enable', false: 'disabled'}[action.enable], action.name]"
+        submit-confirm='action.action("buttonGroup", $index)'
+        items=items
+        submit-confirm-action={{action.confirm}}
+        action-enabled="action.action_enable">
+        <i ng-class="action.name"></i>
+        {{action.verbose}}
+      </a>
+      <a ng-if="action.type=='link'"
+        ng-class="[{true: 'enable', false: 'disabled'}[action.enable], action.name]"
+        ng-click="action.action(action.link)"
+        >
+        <i ng-class="action.name"></i>
+        {{action.verbose}}
+      </a>
+    </li>
+  </ul>
+</div>
+<button class='btn btn-enable fresh' ng-click="buttons.fresh()">
+  <i></i>
+  {{fresh}}
+</button>
+<div class="tabSearch" ng-if="searchOpts.showSearch">
+  <input class="search ng-pristine" ng-model="searchOpts.val" ng-blur="search()">
+</div>

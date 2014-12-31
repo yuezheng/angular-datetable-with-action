@@ -1,0 +1,17 @@
+<div class='datatable'>
+  <table class='data-table'>
+      <thead class="data-table-header" ng-include="'views/table/_table_header.html'" ng-init="showHeader=true" ng-if="showHeader">
+      </thead>
+      <tbody class="data-table-body" ng-include="'views/table/_table_body.html'"></tbody>
+      <tfoot class="data-table-foot"
+          ng-init="showFooter=false"
+          ng-include="'views/table/_table_foot.html'"
+          ng-if="showFooter"></tfoot>
+  </table>
+
+  <div class="datatable-null-tips" ng-if="datatable.data.length==0">
+    {{nullTips}}
+  </div>
+
+  <div ui-view ng-init="detail_show='detail_hide'" class="detail-panel" ng-class={{"detail_show"}} ng-style="{height: detailHeight, minHeight: 480, width: detailWidth}"></div>
+</div>

@@ -1,0 +1,13 @@
+<td colspan="{{datatable.columnDefs.length+(datatable.showCheckbox?1:0)}}">
+  <div class="footer-panel">
+    <div class="total-select-container">
+    </div>
+    <div class="pageCode" ng-if="showPageCode">
+      <li ng-show='unFristPage' ng-click="gotoPage('frist')" class="change-page" data-toggle="tooltip" data-placement="top" title="Frist Page">&lt;&lt;</li>
+      <li ng-show='unFristPage' ng-click="gotoPage('pre')" class="change-page" data-toggle="tooltip" data-placement="top" title="Prev Page">&lt;</li>
+      <li ng-repeat="page in showPages" class="page{{page+1==pagingOptions.currentPage }}" ng-click="gotoPage($index)">{{ page + 1 }}</li>
+      <li ng-show='unLastPage' ng-click="gotoPage('next')" class="change-page" data-toggle="tooltip" data-placement="top" title="Next Page">&gt;</li>
+      <li ng-show='unLastPage' ng-click="gotoPage('last')" class="change-page" data-toggle="tooltip" data-placement="top" title="Last Page">&gt;&gt;</li>
+    </div>
+  </div>
+</td>

@@ -1,0 +1,16 @@
+<tr class='data-table-header'>
+  <th class='checkbox-in-table' ng-if="datatable.showCheckbox">
+      <select-all-checkbox checkboxes='source' all-selected="AllSelectedItems" all-clear="NoSelectedItems"></select-all-checkbox>
+  </th>
+  <th ng-repeat='col in datatable.columnDefs'
+    ng-class=col.field custom-sort
+    order=col.field sort="sort"
+    showfilter=col.showFilter
+    filteritems=col.filterItems
+    selecteditem=col.selected>
+    {{col.displayName}}
+    <span class="data-filter" filterintable items="col.filters"
+      ng-if="col.showFilter"
+      action="filterAction(col.filters.key, col.filters.values)"></span>
+  </th>
+</tr>

@@ -12,7 +12,8 @@ angular
   .module('testApp', [
     'ngAnimate',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'datatable'
   ])
   .config ($routeProvider, $httpProvider, $sceDelegateProvider) ->
     $httpProvider.defaults.useXDomain = true

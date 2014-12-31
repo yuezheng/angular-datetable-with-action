@@ -1,0 +1,8 @@
+<span class='table-arrow'></span>
+<select ng-model="form.item" stop-event='click'
+  class="filter-select"
+  ng-options="field as field.name for field in filterItems"
+  ng-change="update(form.item); $event.stopPropagation();"
+  ng-click="$event.stopPropagation();">
+  <option style="display:none" value=""></option>
+</select>
