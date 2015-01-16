@@ -8,18 +8,22 @@
  # Controller of the testApp
 ###
 angular.module('testApp')
-  .controller 'AboutCtrl', ($scope, $http, $window) ->
+  .controller 'AboutCtrl', ($scope, $http, $window, $state) ->
     $scope.awesomeThings = [
       'HTML5 Boilerplate'
       'AngularJS'
       'Karma'
       'Test'
     ]
+    console.log $state.current
+    $state.go 'main', {}, {reload: true}
+    ###
     instanceTable = new InstanceTable($scope)
     instanceTable.init($scope, {
       $http: $http
       $window: $window
     })
+    ###
 
 
 class InstanceTable extends window.TableView

@@ -13,21 +13,26 @@ angular
     'ngAnimate',
     'ngResource',
     'ngRoute',
+    'ui.router',
     'datatable',
     'datatable.filters'
   ])
-  .config ($routeProvider, $httpProvider, $sceDelegateProvider) ->
+  .config ($routeProvider, $httpProvider, $sceDelegateProvider,
+           $stateProvider) ->
     $httpProvider.defaults.useXDomain = true
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    $routeProvider
-      .when '/',
+    delete $httpProvider.defaults.headers.common['X-Requested-With']
+    $stateProvider
+      .state 'main',
+        url: '/'
         templateUrl: 'views/main.html'
         controller: 'MainCtrl'
-      .when '/about',
+      .state 'about',
+        url: '/about'
         templateUrl: 'views/about.html'
         controller: 'AboutCtrl'
-      .when '/login',
+      .state 'login',
+        url: '/login'
         templateUrl: 'views/login.html'
         controller: 'LoginCtrl'
-      .otherwise
-        redirectTo: '/'
+  .run ($state) ->
+    console.log $state.get()
