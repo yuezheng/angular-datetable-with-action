@@ -1,0 +1,19 @@
+<div class="ip-input">
+  <span ng-repeat="passage in address.passages" class="ip-passage">
+      <input type="text" min={{passage.range.min}}
+      max={{passage.range.max}}
+      ng-model=passage.default ng-disabled=passage.disable
+      ng-change="checkValue('passage', $index)"
+      ng-class="{true: 'invalid'}[passage.invalidate]"
+      tooltip content=passage.tip />
+      <span ng-if="!$last" class="doc">.</span>
+  </span>
+  <span ng-if="address.showCidr" class="ip-passage">
+      <span class="slice">/</span>
+      <input type="text" ng-model=address.cidr.default min=8 max=30
+      ng-disable=address.cidr.disable
+      ng-change="checkValue('cidr')"
+      ng-disabled=address.cidr.disable
+      tooltip content=address.cidr.tip />
+  </span>
+</div>
