@@ -1,0 +1,31 @@
+div.ip-input {
+  height: 42px;
+  width: 293px;
+  span.ip-passage {
+    float: left;
+    input {
+      display: inline;
+      text-align: center;
+      width: 40px;
+      height: 32px;
+      outline: none;
+      &.invalid {
+        border-color: #E36F6F;
+      }
+    }
+    input[disabled] {
+      cursor: not-allowed;
+      background: #EBEBE4;
+    }
+    .passage-tip {
+      position: absolute;
+    }
+    .doc {
+      vertical-align: bottom;
+      margin-right: 2px;
+    }
+    .slice {
+      margin-left: 2px;
+    }
+  }
+}

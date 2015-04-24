@@ -1,0 +1,38 @@
+div.ip-input {
+  width: 293px;
+  height: 42px;
+}
+
+div.ip-input span.ip-passage {
+  float: left;
+}
+
+div.ip-input span.ip-passage input {
+  display: inline;
+  width: 40px;
+  height: 32px;
+  text-align: center;
+  outline: none;
+}
+
+div.ip-input span.ip-passage input.invalid {
+  border-color: #E36F6F;
+}
+
+div.ip-input span.ip-passage input[disabled] {
+  cursor: not-allowed;
+  background: #EBEBE4;
+}
+
+div.ip-input span.ip-passage .passage-tip {
+  position: absolute;
+}
+
+div.ip-input span.ip-passage .doc {
+  margin-right: 2px;
+  vertical-align: bottom;
+}
+
+div.ip-input span.ip-passage .slice {
+  margin-left: 2px;
+}
